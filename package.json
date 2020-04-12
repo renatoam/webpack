@@ -8,12 +8,21 @@
   "private": true,
   "scripts": {
     "build": "webpack -p --config ./config/webpack.config.js --display-error-details",
-    "watch": "webpack -d --watch --config ./config/webpack.config.js --display-error-details"
+    "watch": "webpack -d --watch --config ./config/webpack.config.js --display-error-details",
+    "dev": "webpack-dev-server --config ./config/webpack.config.js --display-error-details"
   },
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
     "core-js": "3",
-    "webpack": "^4.42.0"
+    "global": "^4.4.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.1.2",
+    "redux": "^4.0.5",
+    "regenerator-runtime": "^0.13.5",
+    "webpack": "^4.42.0",
+    "webpack-dev-server": "^3.10.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -21,11 +30,18 @@
     "@babel/preset-env": "^7.9.0",
     "@babel/preset-react": "^7.9.1",
     "astroturf": "^0.10.2",
+    "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
+    "babel-preset-react": "^6.24.1",
+    "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.4.2",
     "cssnano": "^4.1.10",
     "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
     "eslint-loader": "^3.0.3",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.19.0",
     "file-loader": "^6.0.0",
     "html-loader": "^1.0.0",
     "html-webpack-plugin": "^3.2.0",

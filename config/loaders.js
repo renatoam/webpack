@@ -21,7 +21,10 @@ const JSLoader = {
     {
     loader: 'babel-loader',
       options: {
-        configFile: __dirname + '/babel.config.json'
+        configFile: __dirname + '/babel.config.json',
+        // Foi necessário informar, além do arquivo de config do babel, aqui no 
+        // loader tambem os presets que usamos
+        presets: ['@babel/env','@babel/preset-react']
       }
     },
     {

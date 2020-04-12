@@ -1,6 +1,10 @@
 const path = require('path');
+// const webpack = require('webpack');
+// const config = require('./webpack.config');
+// const DevServer = require('webpack-dev-server');
 const _HtmlWebpackPlugin = require('html-webpack-plugin');
 const _StyleLintPlugin = require('stylelint-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const _MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const _MediaQuerySplittingPlugin = require('media-query-splitting-plugin');
 
@@ -22,11 +26,11 @@ const MediaQuerySplittingPlugin = new _MediaQuerySplittingPlugin({});
 // Vai corrigir e validar nosso css. ESlint de css
 const StyleLintPlugin = new _StyleLintPlugin({
   configFile: path.resolve(__dirname, "stylelint.config.js"),
-  context: 'src/css-scss',
+  context: 'src/css',
   syntax: 'scss',
   failOnError: false,
   // IMPORTANTE: na doc fala que o padrão é '**/*.s?(a|c)ss', mas não funciona, precisei trocar pro padrão abaixo. E tem que especificar, remover a linha tbm não resolve
-  files: ["**/*.css"],
+  files: ["**/*.css", "**/*.scss"],
   quiet: false,
   fix: true
 });
@@ -40,9 +44,15 @@ const HtmlWebpackPlugin = new _HtmlWebpackPlugin({
   template: path.resolve("./", "src/html/index.html"),
 });
 
+const _CleanWebpackPlugin = new CleanWebpackPlugin();
+
+// const devServer = DevServer(webpack(config), {})
+
 module.exports = {
+  // devServer: devServer,
   StyleLintPlugin: StyleLintPlugin,
   HtmlWebpackPlugin: HtmlWebpackPlugin,
+  CleanWebpackPlugin: _CleanWebpackPlugin,
   MiniCssExtractPlugin: MiniCssExtractPlugin,
   MediaQuerySplittingPlugin: MediaQuerySplittingPlugin
 };

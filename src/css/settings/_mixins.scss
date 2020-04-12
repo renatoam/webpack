@@ -1,0 +1,140 @@
+@import './variables';
+
+// --- Mixin Effects --- //
+
+// Fonts
+
+@function rem($px: 14) {
+
+  $value: round(($px / 14) * 1000) / 1000 + rem;
+
+  @return $value;
+  
+}
+
+@function vw($px: 14, $vw: 1366) {
+
+  $value: round((($px / $vw) * 100) * 1000) / 1000 + vw;
+
+  @return $value;
+
+}
+
+// Transition
+
+@mixin transition($prop...) {
+  transition-property: $prop;
+  transition-duration: .4s; 
+  transition-timing-function: ease-in-out; 
+  will-change: $prop;
+}
+
+// --- Mixin Creational --- //
+
+// Buttons
+
+@mixin button($type: 'primary') {
+  align-items: center;
+  background-color: $primary-color;
+  border: none;
+  border-radius: 10px;
+  color: $white;
+  cursor: pointer;
+  display: flex;
+  font-size: 0.885vw;
+  height: 51px;
+  justify-content: center;
+  margin: auto;
+  text-transform: uppercase;
+  width: 246px;
+  
+  @include transition(background-color);
+}
+
+// Arrow
+@mixin arrow($direction: "left", $color: #DE4B4B) {
+  background: $color 0% 0% no-repeat padding-box;
+  height: 14px;
+  width: 8px;
+
+  @if ($direction == "left") {
+    transform: matrix(0, -1, 1, 0, 0, 0);
+  } @else if ($direction == "right") {
+    transform: matrix(-1, 0, 0, -1, 0, 0);
+  }
+}
+
+// Before & After
+
+@mixin pseudo($display: block, $pos: absolute, $content: '') {
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+// --- Mixin Functions --- //
+
+// Media Queries
+
+@mixin mq($width) {
+  @media only screen and (max-width: $width) {
+    @content;
+  }
+  @if $width == 'desk' {
+    @media only screen and (min-width: 1366px) {
+      @content;
+    }
+  }
+  @if $width == 'small-desk' {
+    @media only screen and (min-width: 1024px) and (max-width: 1366px) {
+      @content;
+    }
+  }
+  @if $width == 'tb-lands' {
+    @media only screen and (min-width: 961px) and (max-width: 1023px) {
+      @content;
+    }
+  }
+  @if $width == 'tb-port' {
+    @media only screen and (min-width: 769px) and (max-width: 960px) {
+      @content;
+    }
+  }
+  @if $width == 'mob-lands' {
+    @media only screen and (min-width: 576px) and (max-width: 768px) {
+      @content;
+    }
+  }
+  @if $width == 'mob-port' {
+    @media only screen and (min-width: 320px) and (max-width: 575px) {
+      @content;
+    }
+  }
+  @if $width == 'all-desk' {
+    @media only screen and (min-width: 1024px){
+      @content;
+    }
+  }
+  @if $width == 'all-mob' {
+    @media only screen and (max-width: 768px){
+      @content;
+    }
+  }
+}
+
+// Animations
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content; 
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  } 
+}

@@ -5,3 +5,5 @@ Objetivo: criar um boilerplate básico que permita rodar aplicações JS e React
 Para o HMR funcionar, é necessário criar um arquivo _.env.local_ com _CHOKIDAR_USEPOLLING=true_ para funcionar.
 
 O package-lock.json e o yarn.lock DEVEM sempre ser commitados, nunca colocar no .gitignore
+
+O [jsconfig.json](https://code.visualstudio.com/docs/languages/jsconfig) serve pra adicionar alguns recursos ao intellisense do vs code

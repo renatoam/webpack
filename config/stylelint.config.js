@@ -1,14 +1,16 @@
 module.exports = {
+  plugins: ["stylelint-scss"],
   rules: {
-    "at-rule-no-unknown": true,
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": true,
     "block-no-empty": true,
     "color-no-invalid-hex": true,
     "comment-no-empty": true,
     "declaration-block-no-duplicate-properties": [
       true,
       {
-        ignore: ["consecutive-duplicates-with-different-values"]
-      }
+        ignore: ["consecutive-duplicates-with-different-values"],
+      },
     ],
     "declaration-block-no-shorthand-property-overrides": true,
     "font-family-no-duplicate-names": true,
@@ -28,6 +30,7 @@ module.exports = {
     "selector-pseudo-element-no-unknown": true,
     "selector-type-no-unknown": true,
     "string-no-newline": true,
-    "unit-no-unknown": true
-  }
+    "unit-no-unknown": true,
+    "string-quotes": "double",
+  },
 };

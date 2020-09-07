@@ -1,4 +1,4 @@
-@import './variables';
+@import "./variables";
 
 // --- Mixin Effects --- //
 
@@ -33,7 +33,7 @@
 
 // Buttons
 
-@mixin button($type: 'primary') {
+@mixin button($type: "primary") {
   align-items: center;
   background-color: $primary-color;
   border: none;
@@ -66,7 +66,7 @@
 
 // Before & After
 
-@mixin pseudo($display: block, $pos: absolute, $content: '') {
+@mixin pseudo($display: block, $pos: absolute, $content: "") {
   content: $content;
   display: $display;
   position: $pos;
@@ -80,42 +80,42 @@
   @media only screen and (max-width: $width) {
     @content;
   }
-  @if $width == 'desk' {
+  @if $width == "desk" {
     @media only screen and (min-width: 1366px) {
       @content;
     }
   }
-  @if $width == 'small-desk' {
+  @if $width == "small-desk" {
     @media only screen and (min-width: 1024px) and (max-width: 1366px) {
       @content;
     }
   }
-  @if $width == 'tb-lands' {
+  @if $width == "tb-lands" {
     @media only screen and (min-width: 961px) and (max-width: 1023px) {
       @content;
     }
   }
-  @if $width == 'tb-port' {
+  @if $width == "tb-port" {
     @media only screen and (min-width: 769px) and (max-width: 960px) {
       @content;
     }
   }
-  @if $width == 'mob-lands' {
+  @if $width == "mob-lands" {
     @media only screen and (min-width: 576px) and (max-width: 768px) {
       @content;
     }
   }
-  @if $width == 'mob-port' {
+  @if $width == "mob-port" {
     @media only screen and (min-width: 320px) and (max-width: 575px) {
       @content;
     }
   }
-  @if $width == 'all-desk' {
+  @if $width == "all-desk" {
     @media only screen and (min-width: 1024px){
       @content;
     }
   }
-  @if $width == 'all-mob' {
+  @if $width == "all-mob" {
     @media only screen and (max-width: 768px){
       @content;
     }

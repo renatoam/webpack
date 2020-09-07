@@ -1,4 +1,4 @@
-@import './mixins';
+@import "./mixins";
 
 * {
   box-sizing: border-box;
@@ -15,7 +15,7 @@
 html {
   font-size: 14px;
 
-  @include mq('small-mob') {
+  @include mq("small-mob") {
     font-size: 12px;
   }
 }
@@ -27,7 +27,7 @@ body {
   &:before {
     background-image: url(./../assets/images/rick-and-morty-bg.png);
     background-size: 300px;
-    content: '';
+    content: "";
     display: block;
     height: 100%;
     opacity: 0.1;
@@ -59,7 +59,7 @@ ul {
   margin: 0 auto;
   width: 100%;
 
-  @include mq('all-mob') {
+  @include mq("all-mob") {
     max-width: 100vw;
   }
 }

@@ -7,5 +7,4 @@ import App from "./js/App";
 
 const root = document.getElementById("root");
 
-App();
-console.log("YES, WE CAN! WE DID!");
+App(root);

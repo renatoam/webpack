@@ -2,6 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 const loaders = require("./loaders");
 const plugins = require("./plugins");
+
 const devMode = process.env.NODE_ENV !== "production";
 
 module.exports = {
@@ -65,8 +66,9 @@ module.exports = {
     poll: 1000,
   },
   devServer: {
-    contentBase: "../dist",
-    // index: 'index.html',
+    contentBase: path.resolve("./", "src"),
+    // eu mudei a content base de "../dist" pra src, para as mudanças no html tbm serem elegíveis para o hot reload
+    index: "index.html",
     compress: true,
     port: 9000,
     open: true,
@@ -76,9 +78,11 @@ module.exports = {
       errors: true,
     },
     // inline: true,
-    // watchContentBase: true,
+    watchContentBase: true,
+    // ativo a prop watchContentBase pra assistir mudanças na content base e ativar o hot reload
     noInfo: true,
-    // historyApiFallback: true,
+    historyApiFallback: true,
+    // historyApiFallback, quando habilitada, essa prop permite exibir a página principal ao invés de um possível erro 404
     progress: true,
     stats: "minimal",
     proxy: {

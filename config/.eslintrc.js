@@ -21,6 +21,7 @@ module.exports = {
   rules: {
     "no-unused-vars": ["warn", { vars: "local" }],
     "no-console": "off",
+    "max-len": ["error", { code: 120, ignoreComments: true }],
     strict: ["error", "global"],
     curly: "warn",
     quotes: ["warn", "double"],

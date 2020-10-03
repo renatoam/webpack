@@ -13,3 +13,10 @@ Git Hook + Commitizen
 Why exec < /dev/tty? By default, git hooks are not interactive. This command allows the user to use their terminal to interact with Commitizen during the hook.
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
+O que falta:
+
+Organizar imports
+Adaptar pra funcionar com React tbm
+
+Corrigir: tem um problema para verificar o

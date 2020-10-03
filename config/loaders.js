@@ -1,5 +1,5 @@
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const devMode = process.env.NODE_ENV !== "production";
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const devMode = process.env.NODE_ENV !== 'production'
 
 // o babel serve pra transformar nosso código js em ES6 pra um códido
 // anterior a ES5. Todos os pacotes do Babel começam com @babel
@@ -20,23 +20,23 @@ const JSLoader = {
   exclude: /node_modules/,
   use: [
     {
-      loader: "babel-loader",
+      loader: 'babel-loader',
       options: {
-        configFile: __dirname + "/babel.config.json",
+        configFile: __dirname + '/babel.config.json',
         // Foi necessário informar, além do arquivo de config do babel, aqui no
         // loader tambem os presets que usamos
-        presets: ["@babel/env", "@babel/preset-react"],
+        presets: ['@babel/env', '@babel/preset-react']
         // plugins: [devMode && require.resolve("react-refresh/babel")].filter(
         //   Boolean
         // ),
-      },
+      }
     },
     {
       // o astroturf permite que a gente escreva css puro no js usando uma variável com template literals, que permite usarmos as classes como objetos nos elementos (className), bem util pra trabalhar com JSX
-      loader: "astroturf/loader",
-    },
-  ],
-};
+      loader: 'astroturf/loader'
+    }
+  ]
+}
 
 // pra usar o eslint com o webpack, usamos o eslint-loader
 // o eslint-loader precisa ser executado antes do babel-loader transpilar o js
@@ -44,30 +44,30 @@ const JSLoader = {
 // ou usamos a section enforce: 'pre', que garante que ele é executado antes
 const ESLintLoader = {
   test: /\.js$/,
-  enforce: "pre",
+  enforce: 'pre',
   exclude: /node_modules/,
   use: {
-    loader: "eslint-loader",
+    loader: 'eslint-loader',
     options: {
-      configFile: __dirname + "/.eslintrc.js",
+      configFile: __dirname + '/.eslintrc.js',
       cache: true,
-      fix: true,
-    },
-  },
-};
+      fix: true
+    }
+  }
+}
 
 const styleLoader = {
-  loader: "style-loader",
-};
+  loader: 'style-loader'
+}
 
 const miniExtract = {
   loader: MiniCssExtractPlugin.loader,
   options: {
-    publicPath: __dirname + "/../../public/css/",
-  },
-};
+    publicPath: __dirname + '/../../public/css/'
+  }
+}
 
-const defaultCssLoader = devMode ? styleLoader : miniExtract;
+const defaultCssLoader = devMode ? styleLoader : miniExtract
 
 // Nota 1: com o style loader, eu posso utilizar o HMR com css/scss, já com o mini extract não.
 
@@ -83,22 +83,22 @@ const CSSLoader = {
       // o css-loader transforma @import e url() em import/require() no js
       // ex.: url('./image.png') vira require('./image.png')
       // ex.: @import 'style.css' vira require('./style.css')
-      loader: "css-loader",
-      options: { importLoaders: 1 },
+      loader: 'css-loader',
+      options: { importLoaders: 1 }
     },
     // o postcss-loader tem varios recursos, incluindo o autoprefixer e a
     // capacidade de transformar css moderno em css antigo, tipo babel com js
     // ele é um tipo de preset, que comporta vários plugins
     {
-      loader: "postcss-loader",
+      loader: 'postcss-loader',
       options: {
         config: {
-          path: __dirname + "/postcss.config.js",
-        },
-      },
-    },
-  ],
-};
+          path: __dirname + '/postcss.config.js'
+        }
+      }
+    }
+  ]
+}
 
 const sassLoader = {
   test: /\.s[ac]ss$/i,
@@ -106,39 +106,46 @@ const sassLoader = {
   use: [
     defaultCssLoader,
     {
-      loader: "css-loader",
-      options: { importLoaders: 1 },
+      loader: 'css-loader',
+      options: { importLoaders: 1 }
     },
     {
-      loader: "sass-loader",
+      loader: 'resolve-url-loader' // esse cara que resolveu, junto com a instrução abaixo, as urls de imagem no scss
     },
     {
-      loader: "postcss-loader",
+      loader: 'sass-loader',
       options: {
-        config: {
-          path: __dirname + "/postcss.config.js",
-        },
-      },
-    },
-  ],
-};
+        sourceMap: true // essa configuração é obrigatória para o resolve url funcionar (não sei por que)
+      }
+    }
+    // o postcss não funciona bem com o sass, porque ele não entende algumas coisas próprias do sass como importar modulos
+    // {
+    //   loader: "postcss-loader",
+    //   options: {
+    //     config: {
+    //       path: __dirname + "/postcss.config.js",
+    //     },
+    //   },
+    // },
+  ]
+}
 
 // eu poderia usar o url-loader para transformar arquivos em base64, mas ele só é util pra imagens muito pequenas, pois aumenta seu tamanho em uns 20%. Ele é muito util pra salvar imagens em banco de dados, passando atraves de uma API, por exemplo
 const imageLoader = {
   test: /\.(png|svg|jpg|gif)$/,
   use: {
-    loader: "file-loader",
+    loader: 'file-loader',
     options: {
-      outputPath: "images",
-      name: "[path][name].[ext]?[contenthash]",
-    },
-  },
-};
+      outputPath: 'images',
+      name: '[path][name].[ext]?[contenthash]'
+    }
+  }
+}
 
 const htmlLoader = {
   test: /\.html$/,
-  use: { loader: "html-loader" },
-};
+  use: { loader: 'html-loader' }
+}
 
 module.exports = {
   JSLoader: JSLoader,
@@ -146,5 +153,5 @@ module.exports = {
   sassLoader: sassLoader,
   htmlLoader: htmlLoader,
   imageLoader: imageLoader,
-  ESLintLoader: ESLintLoader,
-};
+  ESLintLoader: ESLintLoader
+}

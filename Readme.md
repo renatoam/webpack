@@ -1,4 +1,14 @@
-# Ambiente de desenvolvimento com Webpack
+# Projeto Refactoring
+O projeto Refactoring consiste em passar por todos os meus repositórios antigos e refatorar o código existente e finalizar os projetos inacabados.
+
+A ideia também é manter a versão antiga em outra branch, assim posso fazer comparações entre eles.
+
+Disclaimer: esse é um refactor pra atualizar o ambiente de desenvolvimento com Webpack, porque muita coisa mudou desde a época que eu fiz.
+
+## 12. Ambiente de desenvolvimento com Webpack
+A ideia deste projeto era criar um ambiente de desenvolvimento com Webpack pra eu usar em futuras aplicações, mas também para aprender sobre a ferramenta e cada um dos pormenores dela. Na época, eu li a doc praticamente inteira do Webpack.
+
+---
 
 Objetivo: criar um boilerplate básico que permita rodar aplicações JS e React sem precisar ficar criando toda vez. Além disso, a ideia é seguir como um guide também, com os comentários inseridos no corpo dos arquivos.
 
